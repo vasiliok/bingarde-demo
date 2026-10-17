@@ -1,3 +1,4 @@
 out/
 variants/
 __pycache__/
+.claude/
