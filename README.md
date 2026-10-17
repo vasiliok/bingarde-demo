@@ -5,6 +5,9 @@ C program (`src/`) built for four platforms, with the files a CI would keep.
 
 In the Bingarde repo this repo is the `demo/` submodule.
 
+New here? [GUIDE.md](GUIDE.md) walks you through it step by step: start the server,
+build on a Mac and a Windows PC, load the builds and look at them.
+
 | Platform | Toolchain | Files per build |
 |---|---|---|
 | Windows x86_64, release + debug | MSVC on a Windows PC over SSH (or llvm-mingw in Docker) | `.exe`, `.pdb`, JUnit report, log |

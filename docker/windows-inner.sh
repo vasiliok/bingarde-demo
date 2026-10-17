@@ -5,7 +5,7 @@ set -e
 while read -r project branch build revision config arch; do
     [ -n "$project" ] || continue
     dir="out/$project/$branch/$build/windows-$config-$arch"
-    mkdir -p "$dir"
+    rm -rf "$dir"; mkdir -p "$dir"
     cc="$arch-w64-mingw32-clang"
     if [ "$config" = debug ]; then opt="-O0"; else opt="-O2"; fi
     {

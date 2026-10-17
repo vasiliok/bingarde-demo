@@ -8,7 +8,7 @@ while read -r project branch build revision config arch mode; do
     if [ "$mode" = fail ]; then
         # A real failing build: the compiler stops with an #error.
         dir="out/$project/$branch/$build/linux-$config-$arch"
-        mkdir -p "$dir"
+        rm -rf "$dir"; mkdir -p "$dir"
         cc=aarch64-linux-gnu-gcc; [ "$arch" = x86_64 ] && cc=gcc
         {
             echo "\$ $cc -O0 -g -DDEMO_BROKEN ... -o demoapp src/engine.c src/main_cli.c"
@@ -20,7 +20,7 @@ while read -r project branch build revision config arch mode; do
         continue
     fi
     dir="out/$project/$branch/$build/linux-$config-$arch"
-    mkdir -p "$dir/stage"
+    rm -rf "$dir"; mkdir -p "$dir/stage"
     case "$arch" in
         x86_64) cc=gcc; objcopy=objcopy; strip=strip; triple=x86_64-linux-gnu ;;
         aarch64) cc=aarch64-linux-gnu-gcc; objcopy=aarch64-linux-gnu-objcopy; strip=aarch64-linux-gnu-strip; triple=aarch64-linux-gnu ;;
